@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoPuntos | Recicla y Gana</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Agregamos la fuente Caveat para el estilo cursiva y mantenemos Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif'],
-                        cursive: ['Caveat', 'cursive'],
+                        serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
-                        'theme-bg': '#450920',
-                        'theme-sub': '#da627d',
-                        'theme-accent': '#ffa5ab',
-                        'theme-light': '#f9dbbd', /* Nuevo color agregado */
+                        'theme-bg': '#f9dbbd',      /* Fondo principal claro */
+                        'theme-dark': '#450920',    /* Textos oscuros y contrastes */
+                        'theme-sub': '#da627d',     /* Acentos fuertes, botones e iconos */
+                        'theme-accent': '#ffa5ab',  /* Destellos y acentos suaves */
                         'cat-plastic': '#F97316', 
                         'cat-bio': '#EAB308',     
                         'cat-tech': '#EC4899',    
@@ -31,58 +33,61 @@
     </script>
     <style>
         body {
-            background-color: #450920;
+            background-color: #f9dbbd;
+            color: #450920;
         }
-        /* Aplicamos la tipografía cursiva a los encabezados para darle personalidad */
-        h1, h2, h3, h4, .logo-text {
-            font-family: 'Caveat', cursive;
-            letter-spacing: 1px;
+        /* Tipografía elegante para títulos */
+        h1, h2, h3, h4, h5, .logo-text {
+            font-family: 'Playfair Display', serif;
         }
-        .glass-card {
-            background: rgba(69, 9, 32, 0.85); /* Adaptado al color de fondo */
+        
+        .glass-nav {
+            background: rgba(249, 219, 189, 0.9);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 165, 171, 0.15); /* Borde con el nuevo color de acento */
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(218, 98, 125, 0.2);
+            box-shadow: 0 4px 30px rgba(69, 9, 32, 0.05);
         }
-        .card-dark {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .card-light {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 165, 171, 0.4);
             backdrop-filter: blur(8px);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px -5px rgba(69, 9, 32, 0.05);
         }
-        .card-dark:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(249, 219, 189, 0.5); /* Resalte con el nuevo color f9dbbd */
-            box-shadow: 0 4px 25px rgba(249, 219, 189, 0.15);
+        .card-light:hover {
+            transform: translateY(-5px);
+            background: #ffffff;
+            border-color: #da627d;
+            box-shadow: 0 20px 40px -5px rgba(218, 98, 125, 0.2);
         }
     </style>
 </head>
-<body class="font-sans text-gray-300 antialiased selection:bg-theme-sub selection:text-white">
+<body class="font-sans antialiased selection:bg-theme-sub selection:text-white">
 
-    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
-        <div class="glass-card mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-nav" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
-                    <a href="#" class="flex items-center gap-2 group">
-                        <div class="w-10 h-10 bg-gradient-to-br from-theme-sub to-theme-light rounded-xl flex items-center justify-center text-theme-bg transform group-hover:rotate-12 transition-transform shadow-lg shadow-theme-light/30">
+                    <a href="#" class="flex items-center gap-3 group">
+                        <div class="w-10 h-10 bg-gradient-to-br from-theme-sub to-theme-dark rounded-xl flex items-center justify-center text-white transform group-hover:rotate-12 transition-transform shadow-lg shadow-theme-sub/40">
                             <i class="fa-solid fa-leaf text-xl"></i>
                         </div>
-                        <span class="font-bold text-3xl tracking-tight text-white logo-text">ECO<span class="text-theme-light">PUNTOS</span></span>
+                        <span class="font-bold text-3xl tracking-tight text-theme-dark logo-text">ECO<span class="text-theme-sub italic">PUNTOS</span></span>
                     </a>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#problema" class="text-sm font-medium text-gray-300 hover:text-theme-sub transition-colors">El Problema</a>
-                    <a href="#solucion" class="text-sm font-medium text-gray-300 hover:text-theme-sub transition-colors">La Solución</a>
-                    <a href="#ods" class="text-sm font-medium text-gray-300 hover:text-theme-sub transition-colors">Impacto (ODS)</a>
-                    <a href="#negocio" class="text-sm font-medium text-gray-300 hover:text-theme-sub transition-colors">Modelo de Negocio</a>
-                    <a href="#equipo" class="text-sm font-medium text-gray-300 hover:text-theme-sub transition-colors">Equipo</a>
+                    <a href="#problema" class="text-sm font-semibold text-theme-dark/80 hover:text-theme-sub transition-colors">El Problema</a>
+                    <a href="#solucion" class="text-sm font-semibold text-theme-dark/80 hover:text-theme-sub transition-colors">La Solución</a>
+                    <a href="#ods" class="text-sm font-semibold text-theme-dark/80 hover:text-theme-sub transition-colors">Impacto (ODS)</a>
+                    <a href="#negocio" class="text-sm font-semibold text-theme-dark/80 hover:text-theme-sub transition-colors">Modelo de Negocio</a>
+                    <a href="#equipo" class="text-sm font-semibold text-theme-dark/80 hover:text-theme-sub transition-colors">Equipo</a>
                 </div>
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-theme-sub focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-theme-dark hover:text-theme-sub focus:outline-none">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -90,37 +95,38 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden glass-card absolute w-full border-t border-white/10">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#problema" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-theme-sub hover:bg-white/5 rounded-md">El Problema</a>
-                <a href="#solucion" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-theme-sub hover:bg-white/5 rounded-md">La Solución</a>
-                <a href="#ods" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-theme-sub hover:bg-white/5 rounded-md">Impacto</a>
-                <a href="#negocio" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-theme-sub hover:bg-white/5 rounded-md">Negocio</a>
-                <a href="#equipo" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-theme-sub hover:bg-white/5 rounded-md">Equipo</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-theme-bg/95 backdrop-blur-md absolute w-full border-t border-theme-sub/20 shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#problema" class="block px-3 py-2 text-base font-medium text-theme-dark hover:text-theme-sub hover:bg-white/50 rounded-md">El Problema</a>
+                <a href="#solucion" class="block px-3 py-2 text-base font-medium text-theme-dark hover:text-theme-sub hover:bg-white/50 rounded-md">La Solución</a>
+                <a href="#ods" class="block px-3 py-2 text-base font-medium text-theme-dark hover:text-theme-sub hover:bg-white/50 rounded-md">Impacto</a>
+                <a href="#negocio" class="block px-3 py-2 text-base font-medium text-theme-dark hover:text-theme-sub hover:bg-white/50 rounded-md">Negocio</a>
+                <a href="#equipo" class="block px-3 py-2 text-base font-medium text-theme-dark hover:text-theme-sub hover:bg-white/50 rounded-md">Equipo</a>
             </div>
         </div>
     </nav>
 
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <!-- Decorative blobs adaptados a la nueva paleta -->
-            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-theme-sub opacity-20 blur-[100px]"></div>
-            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-cat-plastic opacity-10 blur-[100px]"></div>
+            <!-- Decorative blobs adaptados al nuevo fondo claro -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-theme-accent opacity-40 blur-[80px]"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-white opacity-60 blur-[60px]"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border-[1px] border-theme-sub/10"></div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <span class="inline-block py-1 px-3 rounded-full bg-white/10 text-theme-light text-sm font-semibold mb-6 border border-theme-light/30 backdrop-blur-sm shadow-[0_0_15px_rgba(249,219,189,0.2)]">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-white/60 text-theme-sub text-sm font-bold mb-8 border border-theme-sub/20 shadow-sm uppercase tracking-widest font-sans">
                     Proyecto Universitario - Equipo #3
                 </span>
-                <h1 class="text-6xl md:text-8xl font-extrabold text-white mb-8 leading-tight">
-                    Tus desechos tienen <span class="text-transparent bg-clip-text bg-gradient-to-r from-theme-sub via-theme-accent to-theme-light">valor</span>. Tu escuela, un mejor lugar.
+                <h1 class="text-5xl md:text-7xl font-black text-theme-dark mb-8 leading-tight">
+                    Tus desechos tienen <span class="text-transparent bg-clip-text bg-gradient-to-r from-theme-sub to-theme-dark italic font-serif">valor</span>. Tu escuela, un mejor lugar.
                 </h1>
-                <p class="text-2xl text-theme-light/90 mb-10 leading-relaxed font-cursive">
-                    EcoPuntos incentiva a la comunidad de la Universidad de Guadalajara a administrar mejor sus desechos mediante contenedores inteligentes y un sistema de recompensas vinculado a tu credencial de estudiante.
+                <p class="text-xl md:text-2xl text-theme-dark/80 mb-10 leading-relaxed font-sans font-light">
+                    EcoPuntos incentiva a la comunidad de la Universidad de Guadalajara a administrar mejor sus desechos mediante contenedores inteligentes y recompensas vinculadas a tu credencial.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#solucion" class="px-8 py-4 bg-gradient-to-r from-theme-sub via-theme-accent to-theme-light text-theme-bg rounded-full font-bold hover:shadow-[0_0_25px_rgba(249,219,189,0.5)] transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 text-xl">
+                    <a href="#solucion" class="px-8 py-4 bg-theme-dark text-theme-bg rounded-full font-semibold hover:bg-theme-sub hover:shadow-lg hover:shadow-theme-sub/30 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 text-lg font-sans">
                         Descubre cómo funciona <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </div>
@@ -128,366 +134,368 @@
         </div>
     </section>
 
-    <section id="problema" class="py-20 relative">
-        <div class="absolute inset-0 bg-black/10 z-0"></div> <!-- Contraste sutil -->
+    <section id="problema" class="py-24 relative bg-white/40 border-y border-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-sm font-bold text-theme-sub uppercase tracking-wider mb-2">El Problema</h2>
-                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Falta de cultura del reciclaje e incentivos nulos</h3>
-                    <p class="text-gray-300 mb-4 text-lg">
-                        En instituciones educativas como la Universidad de Guadalajara, generamos toneladas de basura diariamente. A pesar de existir botes de diferentes colores, la separación de residuos rara vez se respeta.
+                    <h2 class="text-sm font-bold text-theme-sub uppercase tracking-widest mb-3 font-sans">El Problema</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold text-theme-dark mb-6 leading-tight">Falta de cultura e incentivos nulos</h3>
+                    <p class="text-theme-dark/70 mb-6 text-lg font-sans">
+                        En instituciones educativas como la Universidad de Guadalajara, generamos toneladas de basura diariamente. A pesar de existir botes de colores, la separación rara vez se respeta.
                     </p>
-                    <ul class="space-y-4 mt-8">
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-red-500/20 flex items-center justify-center mt-1 border border-red-500/50">
-                                <i class="fa-solid fa-xmark text-theme-sub text-sm"></i>
+                    <ul class="space-y-5 mt-8 font-sans">
+                        <li class="flex items-start card-light p-4 rounded-xl border-l-4 border-l-theme-sub">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-theme-sub/10 flex items-center justify-center border border-theme-sub/30">
+                                <i class="fa-solid fa-triangle-exclamation text-theme-sub text-sm"></i>
                             </div>
-                            <p class="ml-3 text-gray-300">Materiales reciclables terminan contaminados en basureros comunes.</p>
+                            <p class="ml-4 text-theme-dark font-medium">Materiales reciclables terminan contaminados en basureros comunes.</p>
                         </li>
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-red-500/20 flex items-center justify-center mt-1 border border-red-500/50">
-                                <i class="fa-solid fa-xmark text-theme-sub text-sm"></i>
+                        <li class="flex items-start card-light p-4 rounded-xl border-l-4 border-l-theme-sub">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-theme-sub/10 flex items-center justify-center border border-theme-sub/30">
+                                <i class="fa-solid fa-triangle-exclamation text-theme-sub text-sm"></i>
                             </div>
-                            <p class="ml-3 text-gray-300">Los estudiantes no ven un beneficio tangible al realizar el esfuerzo de separar la basura.</p>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-red-500/20 flex items-center justify-center mt-1 border border-red-500/50">
-                                <i class="fa-solid fa-xmark text-theme-sub text-sm"></i>
-                            </div>
-                            <p class="ml-3 text-gray-300">Dificultad logística para las universidades al gestionar residuos no clasificados.</p>
+                            <p class="ml-4 text-theme-dark font-medium">Los estudiantes no ven un beneficio tangible al separar la basura.</p>
                         </li>
                     </ul>
                 </div>
                 <div class="relative">
-                    <div class="aspect-square card-dark rounded-3xl overflow-hidden relative shadow-2xl flex items-center justify-center flex-col p-8 text-center border-theme-sub/20">
-                        <div class="absolute inset-0 bg-gradient-to-br from-black/40 to-transparent"></div>
-                        <i class="fa-solid fa-dumpster text-6xl text-theme-sub mb-4 relative z-10"></i>
-                        <h4 class="text-xl font-bold text-white mb-2 relative z-10">Residuos Mezclados</h4>
-                        <p class="text-gray-400 text-sm relative z-10">El 80% de lo que tiramos en las escuelas podría reciclarse si se separara correctamente desde el origen.</p>
+                    <div class="aspect-square card-light rounded-[2.5rem] overflow-hidden relative shadow-2xl flex items-center justify-center flex-col p-8 text-center group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-theme-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-lg mb-6 relative z-10">
+                            <i class="fa-solid fa-dumpster text-6xl text-theme-sub"></i>
+                        </div>
+                        <h4 class="text-3xl font-bold text-theme-dark mb-3 relative z-10">Residuos Mezclados</h4>
+                        <p class="text-theme-dark/70 font-sans text-lg relative z-10">El 80% de lo que tiramos en las escuelas podría reciclarse si se separara desde el origen.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="solucion" class="py-20">
+    <section id="solucion" class="py-24 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-transparent -z-10"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-sm font-bold text-theme-sub uppercase tracking-wider mb-2">La Solución</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Contenedores Inteligentes EcoPuntos</h3>
-                <p class="text-gray-300 text-lg">
-                    Un sistema automatizado donde depositas tus residuos separados, pasas tu tarjeta de estudiante de la UdeG y acumulas puntos intercambiables por beneficios (como liberación de horas de servicio social o descuentos).
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-sm font-bold text-theme-sub uppercase tracking-widest mb-3 font-sans">La Solución</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-theme-dark mb-6">Contenedores Inteligentes</h3>
+                <p class="text-theme-dark/80 text-xl font-sans">
+                    Un sistema automatizado donde depositas tus residuos, pasas tu tarjeta de estudiante de la UdeG y acumulas puntos intercambiables por beneficios (horas de servicio social o descuentos).
                 </p>
             </div>
 
             <!-- Diagrama de la máquina -->
-            <div class="card-dark rounded-3xl shadow-xl p-8 mb-16 relative overflow-hidden transition-all">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-theme-sub rounded-full mix-blend-screen filter blur-[100px] opacity-20 transform translate-x-1/2 -translate-y-1/2"></div>
+            <div class="card-light rounded-[2.5rem] shadow-xl p-10 mb-20 relative overflow-hidden border-2 border-white">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-theme-accent rounded-full filter blur-[80px] opacity-40 -z-10"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-theme-sub rounded-full filter blur-[100px] opacity-10 -z-10"></div>
                 
-                <h4 class="text-xl font-bold text-center mb-8 text-theme-sub">¿Cómo funciona nuestro hardware?</h4>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-16">
+                <h4 class="text-3xl font-bold text-center mb-12 text-theme-dark">¿Cómo funciona nuestro hardware?</h4>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-12 relative z-10">
                     
-                    <div class="text-center space-y-2 flex-1">
-                        <div class="w-20 h-20 mx-auto bg-white/5 rounded-full flex items-center justify-center border-2 border-dashed border-white/20">
-                            <i class="fa-solid fa-bottle-water text-3xl text-gray-300"></i>
+                    <div class="text-center space-y-4 flex-1">
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg border border-gray-100">
+                            <i class="fa-solid fa-bottle-water text-4xl text-theme-sub"></i>
                         </div>
-                        <h5 class="font-bold text-white">1. Deposita</h5>
-                        <p class="text-sm text-gray-400">Ingresa el residuo por la ranura correspondiente.</p>
+                        <h5 class="text-2xl font-bold text-theme-dark">1. Deposita</h5>
+                        <p class="text-theme-dark/70 font-sans">Ingresa el residuo por la ranura correspondiente.</p>
                     </div>
 
-                    <div class="hidden md:block w-16 h-1 bg-white/20 relative">
-                        <div class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1/2 w-3 h-3 rotate-45 border-t-2 border-r-2 border-white/40"></div>
+                    <div class="hidden md:block text-theme-accent text-3xl">
+                        <i class="fa-solid fa-arrow-right"></i>
                     </div>
 
-                    <div class="text-center space-y-2 flex-1 relative">
-                        <div class="w-24 h-24 mx-auto bg-theme-sub/20 rounded-2xl shadow-lg flex items-center justify-center border border-theme-accent/50 relative z-10 backdrop-blur-md">
-                            <i class="fa-solid fa-microchip text-4xl text-theme-accent"></i>
+                    <div class="text-center space-y-4 flex-1">
+                        <div class="w-28 h-28 mx-auto bg-theme-dark rounded-full flex items-center justify-center shadow-xl shadow-theme-dark/20 relative">
+                            <div class="absolute inset-0 bg-theme-sub rounded-full animate-ping opacity-20"></div>
+                            <i class="fa-solid fa-microchip text-5xl text-theme-bg"></i>
                         </div>
-                        <div class="absolute top-12 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-theme-accent rounded-full blur-2xl -z-10 opacity-20"></div>
-                        <h5 class="font-bold text-white">2. Sensor e IA</h5>
-                        <p class="text-sm text-gray-400">Nuestros sensores (y APIs de IA) identifican el tipo y peso del material.</p>
+                        <h5 class="text-2xl font-bold text-theme-dark">2. Sensor e IA</h5>
+                        <p class="text-theme-dark/70 font-sans">Nuestros sensores identifican el tipo y peso del material.</p>
                     </div>
 
-                    <div class="hidden md:block w-16 h-1 bg-white/20 relative">
-                        <div class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1/2 w-3 h-3 rotate-45 border-t-2 border-r-2 border-white/40"></div>
+                    <div class="hidden md:block text-theme-accent text-3xl">
+                        <i class="fa-solid fa-arrow-right"></i>
                     </div>
 
-                    <div class="text-center space-y-2 flex-1">
-                        <div class="w-20 h-20 mx-auto bg-blue-500/10 rounded-lg flex items-center justify-center border border-blue-500/30">
-                            <i class="fa-solid fa-id-card text-3xl text-blue-400"></i>
+                    <div class="text-center space-y-4 flex-1">
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg border border-gray-100">
+                            <i class="fa-solid fa-id-card text-4xl text-theme-sub"></i>
                         </div>
-                        <h5 class="font-bold text-white">3. Escanea y Gana</h5>
-                        <p class="text-sm text-gray-400">Pasa tu credencial. Los puntos se guardan vía Firebase.</p>
+                        <h5 class="text-2xl font-bold text-theme-dark">3. Escanea y Gana</h5>
+                        <p class="text-theme-dark/70 font-sans">Pasa tu credencial. Los puntos se guardan vía Firebase.</p>
                     </div>
 
                 </div>
             </div>
 
-            <!-- Categorías de separación -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
                 <!-- Plásticos -->
-                <div class="card-dark rounded-2xl p-8 border-t-4 border-t-cat-plastic relative overflow-hidden group">
-                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-cat-plastic opacity-10 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
-                    <div class="w-14 h-14 bg-cat-plastic/20 rounded-xl flex items-center justify-center mb-6 border border-cat-plastic/30">
-                        <i class="fa-solid fa-recycle text-2xl text-cat-plastic"></i>
+                <div class="card-light rounded-3xl p-8 border-t-8 border-t-cat-plastic relative overflow-hidden bg-white">
+                    <div class="w-16 h-16 bg-cat-plastic/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-recycle text-3xl text-cat-plastic"></i>
                     </div>
-                    <h4 class="text-2xl font-bold mb-4 flex items-center gap-2 text-white">
-                        Plásticos
-                        <span class="w-3 h-3 rounded-full bg-cat-plastic shadow-[0_0_10px_rgba(249,115,22,0.8)]"></span>
-                    </h4>
-                    <p class="text-sm text-theme-sub mb-4 font-semibold uppercase tracking-wider">Diferenciador: Naranja</p>
-                    <ul class="space-y-2 text-gray-300">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cat-plastic text-sm"></i> Botellas (PET)</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cat-plastic text-sm"></i> Recipientes</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cat-plastic text-sm"></i> Tapas</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cat-plastic text-sm"></i> Bolsas limpias</li>
+                    <h4 class="text-2xl font-bold mb-2 text-theme-dark">Plásticos</h4>
+                    <p class="text-xs font-bold text-cat-plastic mb-6 uppercase tracking-wider font-sans">Diferenciador: Naranja</p>
+                    <ul class="space-y-3 font-sans text-theme-dark/80">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cat-plastic"></i> Botellas (PET)</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cat-plastic"></i> Recipientes</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cat-plastic"></i> Tapas y bolsas limpias</li>
                     </ul>
                 </div>
 
                 <!-- Biodegradable -->
-                <div class="card-dark rounded-2xl p-8 border-t-4 border-t-cat-bio relative overflow-hidden group">
-                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-cat-bio opacity-10 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
-                    <div class="w-14 h-14 bg-cat-bio/20 rounded-xl flex items-center justify-center mb-6 border border-cat-bio/30">
-                        <i class="fa-solid fa-apple-whole text-2xl text-cat-bio"></i>
+                <div class="card-light rounded-3xl p-8 border-t-8 border-t-cat-bio relative overflow-hidden bg-white">
+                    <div class="w-16 h-16 bg-cat-bio/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-apple-whole text-3xl text-cat-bio"></i>
                     </div>
-                    <h4 class="text-2xl font-bold mb-4 flex items-center gap-2 text-white">
-                        Biodegradable
-                        <span class="w-3 h-3 rounded-full bg-cat-bio shadow-[0_0_10px_rgba(234,179,8,0.8)]"></span>
-                    </h4>
-                    <p class="text-sm text-theme-sub mb-4 font-semibold uppercase tracking-wider">Diferenciador: Amarillo</p>
-                    <ul class="space-y-2 text-gray-300">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cat-bio text-sm"></i> Cáscaras de fruta/verdura</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cat-bio text-sm"></i> Cascarón de huevo</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cat-bio text-sm"></i> Papel y Cartón</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cat-bio text-sm"></i> Algodón y Aserrín</li>
+                    <h4 class="text-2xl font-bold mb-2 text-theme-dark">Biodegradable</h4>
+                    <p class="text-xs font-bold text-cat-bio mb-6 uppercase tracking-wider font-sans">Diferenciador: Amarillo</p>
+                    <ul class="space-y-3 font-sans text-theme-dark/80">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cat-bio"></i> Restos de fruta/verdura</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cat-bio"></i> Papel y Cartón</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cat-bio"></i> Algodón y Aserrín</li>
                     </ul>
                 </div>
 
                 <!-- Electrónicos -->
-                <div class="card-dark rounded-2xl p-8 border-t-4 border-t-cat-tech relative overflow-hidden group">
-                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-cat-tech opacity-10 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
-                    <div class="w-14 h-14 bg-cat-tech/20 rounded-xl flex items-center justify-center mb-6 border border-cat-tech/30">
-                        <i class="fa-solid fa-mobile-screen text-2xl text-cat-tech"></i>
+                <div class="card-light rounded-3xl p-8 border-t-8 border-t-cat-tech relative overflow-hidden bg-white">
+                    <div class="w-16 h-16 bg-cat-tech/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-mobile-screen text-3xl text-cat-tech"></i>
                     </div>
-                    <h4 class="text-2xl font-bold mb-4 flex items-center gap-2 text-white">
-                        Electrónicos
-                        <span class="w-3 h-3 rounded-full bg-cat-tech shadow-[0_0_10px_rgba(236,72,153,0.8)]"></span>
-                    </h4>
-                    <p class="text-sm text-theme-sub mb-4 font-semibold uppercase tracking-wider">Diferenciador: Rosa</p>
-                    <ul class="space-y-2 text-gray-300">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cat-tech text-sm"></i> Teléfonos celulares</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cat-tech text-sm"></i> Cables y cargadores</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cat-tech text-sm"></i> TV's antiguas</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cat-tech text-sm"></i> Laptops y periféricos</li>
+                    <h4 class="text-2xl font-bold mb-2 text-theme-dark">Electrónicos</h4>
+                    <p class="text-xs font-bold text-cat-tech mb-6 uppercase tracking-wider font-sans">Diferenciador: Rosa</p>
+                    <ul class="space-y-3 font-sans text-theme-dark/80">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cat-tech"></i> Teléfonos y Laptops</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cat-tech"></i> Cables y cargadores</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cat-tech"></i> Pilas y baterías</li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <section id="ods" class="py-20 relative overflow-hidden bg-black/20">
-        <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-        
+    <section id="ods" class="py-24 relative bg-theme-accent/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-sm font-bold text-theme-sub uppercase tracking-wider mb-2">Nuestro Impacto</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Alineados con la Agenda 2030</h3>
-                <p class="text-gray-300 max-w-2xl mx-auto">EcoPuntos no solo limpia las escuelas, sino que ataca problemas globales estructurados en los Objetivos de Desarrollo Sostenible de la ONU.</p>
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-sm font-bold text-theme-sub uppercase tracking-widest mb-3 font-sans">Nuestro Impacto</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-theme-dark mb-6">Alineados con la Agenda 2030</h3>
+                <p class="text-theme-dark/80 text-lg font-sans">EcoPuntos no solo limpia las escuelas, sino que ataca problemas globales estructurados en los Objetivos de Desarrollo Sostenible de la ONU.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                <div class="card-dark rounded-2xl p-6 border border-white/10">
-                    <div class="w-16 h-16 bg-[#FD9D24] rounded-lg flex items-center justify-center font-bold text-2xl mb-4 shadow-lg text-white">11</div>
-                    <h4 class="text-xl font-bold mb-2 text-theme-sub">Ciudades y Comunidades Sostenibles</h4>
-                    <p class="text-sm text-gray-300">Al gestionar los residuos en micro-comunidades, reducimos la carga de servicios públicos y fomentamos espacios más limpios.</p>
+                <div class="card-light rounded-3xl p-8 border border-white bg-white/60">
+                    <div class="w-20 h-20 bg-[#FD9D24] rounded-2xl flex items-center justify-center font-bold text-3xl mb-6 shadow-lg shadow-[#FD9D24]/30 text-white font-sans">11</div>
+                    <h4 class="text-2xl font-bold mb-4 text-theme-dark">Ciudades y Comunidades Sostenibles</h4>
+                    <p class="text-theme-dark/70 font-sans">Al gestionar los residuos en micro-comunidades, reducimos la carga de servicios públicos y fomentamos espacios más limpios.</p>
                 </div>
 
-                <div class="card-dark rounded-2xl p-6 border border-white/10 hover:border-theme-accent/40 group">
-                    <div class="w-16 h-16 bg-[#BF8B2E] rounded-lg flex items-center justify-center font-bold text-2xl mb-4 shadow-lg text-white group-hover:scale-110 transition-transform">12</div>
-                    <h4 class="text-xl font-bold mb-2 text-theme-sub">Producción y Consumo Responsables</h4>
-                    <p class="text-sm text-gray-300">Evitamos que materiales útiles terminen en vertederos. Reintegramos plásticos y metales a la cadena de valor.</p>
+                <div class="card-light rounded-3xl p-8 border border-white bg-white/60">
+                    <div class="w-20 h-20 bg-[#BF8B2E] rounded-2xl flex items-center justify-center font-bold text-3xl mb-6 shadow-lg shadow-[#BF8B2E]/30 text-white font-sans">12</div>
+                    <h4 class="text-2xl font-bold mb-4 text-theme-dark">Producción y Consumo Responsables</h4>
+                    <p class="text-theme-dark/70 font-sans">Evitamos que materiales útiles terminen en vertederos. Reintegramos plásticos y metales a la cadena de valor.</p>
                 </div>
 
-                <div class="card-dark rounded-2xl p-6 border border-theme-accent/50 relative shadow-[0_0_20px_rgba(255,165,171,0.15)] group">
-                    <div class="absolute -top-3 -right-3 bg-theme-accent text-theme-bg text-xs font-extrabold px-3 py-1 rounded-full shadow-lg transform rotate-12 group-hover:rotate-0 transition-transform duration-300">Proyecto Principal</div>
-                    <div class="w-16 h-16 bg-[#3F7E44] rounded-lg flex items-center justify-center font-bold text-2xl mb-4 shadow-lg text-white group-hover:scale-110 transition-transform">13</div>
-                    <h4 class="text-xl font-bold mb-2 text-theme-sub">Acción por el Clima</h4>
-                    <p class="text-sm text-gray-300">El reciclaje correcto disminuye drásticamente las emisiones de gas metano que se generan en los basureros a cielo abierto.</p>
+                <div class="card-light rounded-3xl p-8 border-2 border-theme-sub bg-white shadow-xl shadow-theme-sub/10 relative transform hover:-translate-y-2 transition-transform">
+                    <div class="absolute -top-4 -right-4 bg-theme-sub text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg font-sans">ODS Principal</div>
+                    <div class="w-20 h-20 bg-[#3F7E44] rounded-2xl flex items-center justify-center font-bold text-3xl mb-6 shadow-lg shadow-[#3F7E44]/30 text-white font-sans">13</div>
+                    <h4 class="text-2xl font-bold mb-4 text-theme-dark">Acción por el Clima</h4>
+                    <p class="text-theme-dark/70 font-sans">El reciclaje correcto disminuye drásticamente las emisiones de gas metano que se generan en los basureros a cielo abierto.</p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <section id="negocio" class="py-20">
+    <section id="negocio" class="py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-sm font-bold text-theme-sub uppercase tracking-wider mb-2">Esquema Estratégico</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Modelo de Negocio</h3>
-                <p class="text-gray-300">Basado en la metodología Canvas, así es como EcoPuntos se hace sostenible.</p>
+                <h2 class="text-sm font-bold text-theme-sub uppercase tracking-widest mb-3 font-sans">Esquema Estratégico</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-theme-dark mb-6">Modelo de Negocio Canvas</h3>
             </div>
 
-            <!-- Grid Canvas -->
-            <div class="grid grid-cols-1 md:grid-cols-5 md:grid-rows-2 gap-4 lg:gap-6 bg-black/20 p-4 md:p-8 rounded-3xl border border-white/5 shadow-inner">
+            <!-- Grid Canvas para Tema Claro -->
+            <div class="grid grid-cols-1 md:grid-cols-5 md:grid-rows-2 gap-4 lg:gap-6 bg-white/50 p-6 md:p-10 rounded-[2.5rem] border border-white shadow-xl">
                 
                 <!-- Socios Clave -->
-                <div class="card-dark p-5 rounded-xl md:col-span-1 md:row-span-2">
-                    <div class="flex items-center gap-2 mb-3">
-                        <i class="fa-solid fa-handshake text-theme-accent text-lg"></i>
-                        <h4 class="font-bold text-white">Socios Clave</h4>
+                <div class="card-light p-6 rounded-2xl md:col-span-1 md:row-span-2 bg-white">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-theme-accent/30 flex items-center justify-center text-theme-sub">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-theme-dark">Socios Clave</h4>
                     </div>
-                    <ul class="text-sm text-gray-300 space-y-2 list-disc list-inside">
-                        <li>Universidades (UdeG), prepas.</li>
-                        <li>Hardware (Steren).</li>
-                        <li>Cloud (Firebase, Vercel).</li>
-                        <li>APIs de IA.</li>
+                    <ul class="text-sm text-theme-dark/80 space-y-2 list-none font-sans">
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-theme-sub text-xs mt-1"></i> Universidades (UdeG)</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-theme-sub text-xs mt-1"></i> Hardware (Steren)</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-theme-sub text-xs mt-1"></i> Cloud (Firebase)</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-theme-sub text-xs mt-1"></i> APIs de IA</li>
                     </ul>
                 </div>
 
                 <!-- Actividades Clave -->
-                <div class="card-dark p-5 rounded-xl md:col-span-1 md:row-span-1">
-                    <div class="flex items-center gap-2 mb-3">
-                        <i class="fa-solid fa-bolt text-theme-accent text-lg"></i>
-                        <h4 class="font-bold text-white">Actividades</h4>
+                <div class="card-light p-6 rounded-2xl md:col-span-1 md:row-span-1 bg-white">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-theme-accent/30 flex items-center justify-center text-theme-sub">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-theme-dark">Actividades</h4>
                     </div>
-                    <p class="text-sm text-gray-300">Identificación, clasificación y recolección automatizada de desechos.</p>
+                    <p class="text-sm text-theme-dark/80 font-sans">Identificación, clasificación y recolección automatizada de desechos.</p>
                 </div>
 
                 <!-- Propuesta de Valor -->
-                <div class="card-dark p-5 rounded-xl border border-theme-accent/30 md:col-span-1 md:row-span-2 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-theme-sub to-theme-accent"></div>
-                    <div class="flex items-center gap-2 mb-3">
-                        <i class="fa-solid fa-gift text-theme-accent text-xl group-hover:scale-110 transition-transform"></i>
-                        <h4 class="font-bold text-white">Propuesta de Valor</h4>
+                <div class="card-light p-6 rounded-2xl border-2 border-theme-dark bg-theme-dark md:col-span-1 md:row-span-2 text-white shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-theme-sub flex items-center justify-center text-white shadow-lg shadow-theme-sub/50">
+                            <i class="fa-solid fa-gift text-xl"></i>
+                        </div>
+                        <h4 class="font-bold text-xl font-serif">Valor</h4>
                     </div>
-                    <p class="text-sm text-gray-200 mb-2 font-medium">Incentivar a la comunidad para administrar mejor los desechos.</p>
-                    <p class="text-xs text-gray-400">Transformamos basura en recursos (horas servicio) y limpiamos la institución.</p>
+                    <p class="text-base text-theme-bg/90 mb-4 font-medium font-sans">Incentivar a la comunidad para administrar mejor los desechos.</p>
+                    <p class="text-sm text-white/70 font-sans">Transformamos basura en recursos y limpiamos la institución.</p>
                 </div>
 
                 <!-- Relación -->
-                <div class="card-dark p-5 rounded-xl md:col-span-1 md:row-span-1">
-                    <div class="flex items-center gap-2 mb-3">
-                        <i class="fa-solid fa-heart text-theme-accent text-lg"></i>
-                        <h4 class="font-bold text-white">Relación Clientes</h4>
+                <div class="card-light p-6 rounded-2xl md:col-span-1 md:row-span-1 bg-white">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-theme-accent/30 flex items-center justify-center text-theme-sub">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-theme-dark">Relación</h4>
                     </div>
-                    <p class="text-sm text-gray-300">Sitio web, instituciones asociadas y recomendaciones.</p>
+                    <p class="text-sm text-theme-dark/80 font-sans">Sitio web, instituciones asociadas y recomendaciones.</p>
                 </div>
 
                 <!-- Segmentos -->
-                <div class="card-dark p-5 rounded-xl md:col-span-1 md:row-span-2">
-                    <div class="flex items-center gap-2 mb-3">
-                        <i class="fa-solid fa-users text-theme-accent text-lg"></i>
-                        <h4 class="font-bold text-white">Segmentos</h4>
+                <div class="card-light p-6 rounded-2xl md:col-span-1 md:row-span-2 bg-white">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-theme-accent/30 flex items-center justify-center text-theme-sub">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-theme-dark">Segmentos</h4>
                     </div>
-                    <ul class="text-sm text-gray-300 space-y-2 list-disc list-inside">
-                        <li><strong>B2B:</strong> Universidades.</li>
-                        <li><strong>B2C:</strong> Estudiantes.</li>
-                        <li><strong>B2B:</strong> Recicladoras.</li>
+                    <ul class="text-sm text-theme-dark/80 space-y-3 list-none font-sans">
+                        <li class="pb-2 border-b border-gray-100"><strong class="text-theme-sub">B2B:</strong> Universidades.</li>
+                        <li class="pb-2 border-b border-gray-100"><strong class="text-theme-sub">B2C:</strong> Estudiantes.</li>
+                        <li><strong class="text-theme-sub">B2B:</strong> Recicladoras.</li>
                     </ul>
                 </div>
 
                 <!-- Recursos Clave -->
-                <div class="card-dark p-5 rounded-xl md:col-span-1 md:row-span-1 md:col-start-2 md:row-start-2">
-                    <div class="flex items-center gap-2 mb-3">
-                        <i class="fa-solid fa-box text-theme-accent text-lg"></i>
-                        <h4 class="font-bold text-white">Recursos Clave</h4>
+                <div class="card-light p-6 rounded-2xl md:col-span-1 md:row-span-1 md:col-start-2 md:row-start-2 bg-white">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-theme-accent/30 flex items-center justify-center text-theme-sub">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-theme-dark">Recursos</h4>
                     </div>
-                    <p class="text-sm text-gray-300">Electrónica, credencial estudiantes, IA.</p>
+                    <p class="text-sm text-theme-dark/80 font-sans">Electrónica, credencial de estudiantes, IA.</p>
                 </div>
 
                 <!-- Canales -->
-                <div class="card-dark p-5 rounded-xl md:col-span-1 md:row-span-1 md:col-start-4 md:row-start-2">
-                    <div class="flex items-center gap-2 mb-3">
-                        <i class="fa-solid fa-truck text-theme-accent text-lg"></i>
-                        <h4 class="font-bold text-white">Canales</h4>
+                <div class="card-light p-6 rounded-2xl md:col-span-1 md:row-span-1 md:col-start-4 md:row-start-2 bg-white">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-theme-accent/30 flex items-center justify-center text-theme-sub">
+                            <i class="fa-solid fa-truck"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-theme-dark">Canales</h4>
                     </div>
-                    <p class="text-sm text-gray-300">Redes sociales, Bootcamps, web, visitas físicas.</p>
+                    <p class="text-sm text-theme-dark/80 font-sans">Redes, Bootcamps, web, visitas físicas.</p>
                 </div>
 
             </div>
 
-            <!-- Finanzas -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mt-4 lg:mt-6">
-                <div class="card-dark p-5 rounded-xl">
-                    <div class="flex items-center gap-2 mb-3">
-                        <i class="fa-solid fa-file-invoice-dollar text-theme-accent text-lg"></i>
-                        <h4 class="font-bold text-white">Estructura de Costes</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <div class="card-light p-8 rounded-[2rem] bg-white flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
+                    <div class="w-16 h-16 shrink-0 rounded-full bg-red-100 flex items-center justify-center text-red-500 text-2xl">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
                     </div>
-                    <p class="text-sm text-gray-300">Manufactura de contenedor, mantenimiento, hosting y base de datos.</p>
+                    <div>
+                        <h4 class="font-bold text-2xl text-theme-dark mb-2">Estructura de Costes</h4>
+                        <p class="text-theme-dark/70 font-sans">Manufactura del contenedor, mantenimiento, hosting web y base de datos (Firebase).</p>
+                    </div>
                 </div>
 
-                <div class="card-dark p-5 rounded-xl">
-                    <div class="flex items-center gap-2 mb-3">
-                        <i class="fa-solid fa-sack-dollar text-theme-accent text-lg"></i>
-                        <h4 class="font-bold text-white">Fuentes de Ingreso</h4>
+                <div class="card-light p-8 rounded-[2rem] bg-white flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
+                    <div class="w-16 h-16 shrink-0 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-2xl">
+                        <i class="fa-solid fa-sack-dollar"></i>
                     </div>
-                    <p class="text-sm text-gray-300">
-                        Patrocinios (SEJ, Casa Cem), donaciones, Empresas ESR, Banco Interamericano y venta de material.
-                    </p>
+                    <div>
+                        <h4 class="font-bold text-2xl text-theme-dark mb-2">Fuentes de Ingreso</h4>
+                        <p class="text-theme-dark/70 font-sans">
+                            Patrocinios (SEJ, Casa Cem), donaciones, Empresas ESR, Banco Interamericano y venta de material.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="equipo" class="py-20 relative bg-black/10">
+    <section id="equipo" class="py-24 relative bg-white/40 border-t border-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-sm font-bold text-theme-sub uppercase tracking-wider mb-2">Quienes somos</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Equipo #3</h3>
-                <p class="text-gray-300">Las mentes detrás del proyecto EcoPuntos.</p>
+                <h2 class="text-sm font-bold text-theme-sub uppercase tracking-widest mb-3 font-sans">Quienes somos</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-theme-dark mb-4">Equipo #3</h3>
+                <p class="text-theme-dark/70 font-sans text-lg">Las mentes detrás del proyecto EcoPuntos.</p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Miembros generados dinámicamente -->
-                <div class="card-dark rounded-2xl p-6 text-center group cursor-pointer">
-                    <div class="w-20 h-20 mx-auto bg-white/5 border border-theme-accent/30 rounded-full flex items-center justify-center mb-4 text-theme-accent text-2xl font-bold shadow-lg shadow-theme-accent/10 group-hover:scale-110 group-hover:bg-theme-accent/10 transition-all">AP</div>
-                    <h4 class="font-bold text-white">Angel Payan</h4>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Miembros generados -->
+                <div class="card-light rounded-[2rem] p-8 text-center group bg-white hover:bg-theme-bg transition-colors">
+                    <div class="w-24 h-24 mx-auto bg-theme-accent/20 border border-theme-sub/20 rounded-full flex items-center justify-center mb-6 text-theme-dark text-3xl font-serif shadow-lg shadow-theme-accent/30 group-hover:bg-theme-sub group-hover:text-white transition-all">AP</div>
+                    <h4 class="font-bold text-theme-dark text-xl">Angel Payan</h4>
                 </div>
-                <div class="card-dark rounded-2xl p-6 text-center group cursor-pointer">
-                    <div class="w-20 h-20 mx-auto bg-white/5 border border-theme-accent/30 rounded-full flex items-center justify-center mb-4 text-theme-accent text-2xl font-bold shadow-lg shadow-theme-accent/10 group-hover:scale-110 group-hover:bg-theme-accent/10 transition-all">PG</div>
-                    <h4 class="font-bold text-white">Paola Gonzalez</h4>
+                <div class="card-light rounded-[2rem] p-8 text-center group bg-white hover:bg-theme-bg transition-colors">
+                    <div class="w-24 h-24 mx-auto bg-theme-accent/20 border border-theme-sub/20 rounded-full flex items-center justify-center mb-6 text-theme-dark text-3xl font-serif shadow-lg shadow-theme-accent/30 group-hover:bg-theme-sub group-hover:text-white transition-all">PG</div>
+                    <h4 class="font-bold text-theme-dark text-xl">Paola Gonzalez</h4>
                 </div>
-                <div class="card-dark rounded-2xl p-6 text-center group cursor-pointer">
-                    <div class="w-20 h-20 mx-auto bg-white/5 border border-theme-accent/30 rounded-full flex items-center justify-center mb-4 text-theme-accent text-2xl font-bold shadow-lg shadow-theme-accent/10 group-hover:scale-110 group-hover:bg-theme-accent/10 transition-all">CA</div>
-                    <h4 class="font-bold text-white">Chloe Aramburo</h4>
+                <div class="card-light rounded-[2rem] p-8 text-center group bg-white hover:bg-theme-bg transition-colors">
+                    <div class="w-24 h-24 mx-auto bg-theme-accent/20 border border-theme-sub/20 rounded-full flex items-center justify-center mb-6 text-theme-dark text-3xl font-serif shadow-lg shadow-theme-accent/30 group-hover:bg-theme-sub group-hover:text-white transition-all">CA</div>
+                    <h4 class="font-bold text-theme-dark text-xl">Chloe Aramburo</h4>
                 </div>
-                <div class="card-dark rounded-2xl p-6 text-center group cursor-pointer">
-                    <div class="w-20 h-20 mx-auto bg-white/5 border border-theme-accent/30 rounded-full flex items-center justify-center mb-4 text-theme-accent text-2xl font-bold shadow-lg shadow-theme-accent/10 group-hover:scale-110 group-hover:bg-theme-accent/10 transition-all">SV</div>
-                    <h4 class="font-bold text-white">Samantha Vega</h4>
+                <div class="card-light rounded-[2rem] p-8 text-center group bg-white hover:bg-theme-bg transition-colors">
+                    <div class="w-24 h-24 mx-auto bg-theme-accent/20 border border-theme-sub/20 rounded-full flex items-center justify-center mb-6 text-theme-dark text-3xl font-serif shadow-lg shadow-theme-accent/30 group-hover:bg-theme-sub group-hover:text-white transition-all">SV</div>
+                    <h4 class="font-bold text-theme-dark text-xl">Samantha Vega</h4>
                 </div>
-                <div class="card-dark rounded-2xl p-6 text-center group cursor-pointer">
-                    <div class="w-20 h-20 mx-auto bg-white/5 border border-theme-accent/30 rounded-full flex items-center justify-center mb-4 text-theme-accent text-2xl font-bold shadow-lg shadow-theme-accent/10 group-hover:scale-110 group-hover:bg-theme-accent/10 transition-all">KO</div>
-                    <h4 class="font-bold text-white">Karen Osorio</h4>
+                <div class="card-light rounded-[2rem] p-8 text-center group bg-white hover:bg-theme-bg transition-colors">
+                    <div class="w-24 h-24 mx-auto bg-theme-accent/20 border border-theme-sub/20 rounded-full flex items-center justify-center mb-6 text-theme-dark text-3xl font-serif shadow-lg shadow-theme-accent/30 group-hover:bg-theme-sub group-hover:text-white transition-all">KO</div>
+                    <h4 class="font-bold text-theme-dark text-xl">Karen Osorio</h4>
                 </div>
-                <div class="card-dark rounded-2xl p-6 text-center group cursor-pointer">
-                    <div class="w-20 h-20 mx-auto bg-white/5 border border-theme-accent/30 rounded-full flex items-center justify-center mb-4 text-theme-accent text-3xl font-bold shadow-lg shadow-theme-accent/10 group-hover:scale-110 group-hover:bg-theme-accent/10 transition-all font-cursive">CO</div>
-                    <h4 class="font-bold text-white text-2xl">Camila Ornelas</h4>
+                <div class="card-light rounded-[2rem] p-8 text-center group bg-white hover:bg-theme-bg transition-colors">
+                    <div class="w-24 h-24 mx-auto bg-theme-accent/20 border border-theme-sub/20 rounded-full flex items-center justify-center mb-6 text-theme-dark text-3xl font-serif shadow-lg shadow-theme-accent/30 group-hover:bg-theme-sub group-hover:text-white transition-all">CO</div>
+                    <h4 class="font-bold text-theme-dark text-xl">Camila Ornelas</h4>
                 </div>
-                <!-- Tarjeta de Naomi Actualizada -->
-                <div class="card-dark rounded-2xl p-6 text-center md:col-start-2 lg:col-auto group cursor-pointer">
-                    <div class="w-20 h-20 mx-auto bg-white/5 border border-theme-light/50 rounded-full flex items-center justify-center mb-4 text-theme-light text-3xl font-bold shadow-lg shadow-theme-light/20 group-hover:scale-110 group-hover:bg-theme-light/10 transition-all font-cursive">NR</div>
-                    <h4 class="font-bold text-theme-light text-3xl">Naomi Rea</h4>
+                
+                <!-- Tarjeta Destacada Naomi Rea -->
+                <div class="card-light rounded-[2rem] p-8 text-center md:col-start-2 lg:col-auto group bg-theme-dark hover:scale-105 border-theme-sub transition-all shadow-xl shadow-theme-dark/20">
+                    <div class="w-24 h-24 mx-auto bg-theme-bg rounded-full flex items-center justify-center mb-6 text-theme-dark text-3xl font-bold font-serif shadow-lg">NR</div>
+                    <h4 class="font-bold text-theme-bg text-2xl">Naomi Rea</h4>
+                    <p class="text-theme-accent text-sm mt-2 font-sans font-medium">Equipo #3</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black/40 text-gray-300 py-12 border-t-2 border-theme-light/20">
+    <footer class="bg-theme-dark text-theme-bg py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-2 group cursor-pointer">
-                    <i class="fa-solid fa-leaf text-2xl text-theme-light group-hover:rotate-12 transition-transform"></i>
-                    <span class="font-bold text-3xl tracking-tight text-white logo-text">ECO<span class="text-theme-light">PUNTOS</span></span>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 border-b border-white/10 pb-12 mb-8">
+                <div class="flex items-center gap-3 group cursor-pointer">
+                    <div class="w-12 h-12 rounded-full bg-theme-sub/20 flex items-center justify-center text-theme-accent">
+                        <i class="fa-solid fa-leaf text-2xl group-hover:rotate-12 transition-transform"></i>
+                    </div>
+                    <span class="font-bold text-4xl tracking-tight text-white logo-text">ECO<span class="text-theme-accent italic">PUNTOS</span></span>
                 </div>
                 
-                <div class="text-gray-400 text-sm text-center md:text-right">
-                    <p>Proyecto Universitario - Equipo #3</p>
-                    <p class="mt-1">&copy; 2026 EcoPuntos. Todos los derechos reservados.</p>
+                <div class="flex gap-6 text-theme-accent/80 font-sans">
+                    <a href="#" class="hover:text-theme-accent transition-colors"><i class="fa-brands fa-instagram text-2xl"></i></a>
+                    <a href="#" class="hover:text-theme-accent transition-colors"><i class="fa-brands fa-facebook text-2xl"></i></a>
+                    <a href="#" class="hover:text-theme-accent transition-colors"><i class="fa-solid fa-envelope text-2xl"></i></a>
                 </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center text-theme-bg/60 text-sm font-sans">
+                <p>Proyecto Universitario - Metodología Canvas.</p>
+                <p class="mt-2 md:mt-0">&copy; 2026 EcoPuntos. Equipo #3.</p>
             </div>
         </div>
     </footer>
@@ -511,9 +519,11 @@
 
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 20) {
-                    navbar.classList.add('shadow-lg', 'shadow-black/20');
+                    navbar.classList.add('shadow-md');
+                    navbar.classList.remove('border-b');
                 } else {
-                    navbar.classList.remove('shadow-lg', 'shadow-black/20');
+                    navbar.classList.remove('shadow-md');
+                    navbar.classList.add('border-b');
                 }
             });
         });
